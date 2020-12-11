@@ -1,0 +1,243 @@
+<--
+.. title: Event Schedule
+.. slug: event-schedule
+.. date: 2020-12-10
+-->
+
+
+<html>
+<body>
+
+  <p>blurb about the workshops and other events for love data week that the datathon participants can take advantage of</p>
+
+  <div class="table-responsive mt-2">
+  <table class="table table-bordered table-hover">
+  <thead>
+  <tr>
+    <th scope="col" class="col-1" id="time-header">Time (EST)</th>
+    <th scope="col" class="col">Event</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th scope="row" class="time" colspan="2">February 5th</th>
+  </tr>
+  <tr>
+    <th scope="row" class="time">12:00 pm</th>
+    <td>Datathon kickoff with Data Services</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time">12:30 pm</th>
+    <td>Workshop on Track 1 Dataset [<a href="">materials</a>] [<a href="">video</a>]<br/>Workshop on Track 2 Dataset [<a href="">materials</a>] [<a href="">video</a>]<br/>Workshop on Track 3 Dataset [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time">1:30 pm</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time">2:30 pm</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time">3:30 pm</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time">4:30 pm</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time" colspan="2">February 6th</th>
+  </tr>
+  <tr>
+  <tr>
+    <th scope="row" class="time">11:00 am</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time" colspan="2">February 7th</th>
+  </tr>
+  <tr>
+  <tr>
+    <th scope="row" class="time">11:00 am</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time" colspan="2">February 8th</th>
+  </tr>
+  <tr>
+  <tr>
+    <th scope="row" class="time">11:00 am</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time" colspan="2">February 9th</th>
+  </tr>
+  <tr>
+  <tr>
+    <th scope="row" class="time">11:00 am</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time" colspan="2">February 10th</th>
+  </tr>
+  <tr>
+  <tr>
+    <th scope="row" class="time">11:00 am</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time" colspan="2">February 11th</th>
+  </tr>
+  <tr>
+  <tr>
+    <th scope="row" class="time">11:00 am</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time" colspan="2">February 12th</th>
+  </tr>
+  <tr>
+  <tr>
+    <th scope="row" class="time">11:00 am</th>
+    <td>Workshop on XYZ [<a href="">materials</a>] [<a href="">video</a>]</td>
+  </tr>
+  <tr>
+    <th scope="row" class="time">12:00 pm</th>
+    <td>DATATHON IS OFFICALLY OVER! Submit your work here: </td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+<script>
+// JavaScript is enabled! Show the timezone chooser
+var chooser = document.getElementById("timezone-chooser");
+chooser.style.display = "";
+
+// Change time header
+document.getElementById("time-header").innerText = "Time";
+
+
+// Try and get local timezone name
+var tz_name;
+try {
+  tz_name = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  console.log("Local timezone:", tz_name);
+} catch(ex) {
+  tz_name = "(local timezone)";
+  console.log("Can't get local timezone name");
+}
+
+// Get local timezone offset
+// XXX: Note that this only works if the offset is currently the same as on that day (no daylight saving or whatever)
+var tz_offset = -new Date().getTimezoneOffset();
+
+// Try and find the local timezone in the list
+var timezone_set = false;
+for(var i = 0; i < chooser.options.length; ++i) {
+  if(tz_name == chooser.options[i].value) {
+    // If the user's settings disagree with our list, use the user's setting
+    if(parseInt(chooser.options[i].getAttribute("data-offset")) != tz_offset) {
+      chooser.options[i].setAttribute("data-offset", tz_offset);
+      console.log("Changing offset from ", chooser.options[i].getAttribute("data-offset"), " to ", tz_offset);
+    }
+
+    // Select this timezone
+    chooser.value = tz_name;
+    timezone_set = true;
+    break;
+  }
+}
+
+// If we didn't find the timezone, add an option
+if(!timezone_set) {
+  console.log("Adding unknown local timezone to list");
+
+  var opt = document.createElement("option");
+  opt.value = tz_name;
+  opt.innerText = tz_name;
+  opt.setAttribute("data-offset", tz_offset);
+  chooser.appendChild(opt);
+
+  // And select it
+  chooser.value = tz_name;
+}
+
+
+// Store the original UTC minute of the day on elements
+var times = document.getElementsByClassName("time");
+for(var i = 0; i < times.length; ++i) {
+  // Parse the time
+  var matches = times[i].innerText.match(/([0-9]+):([0-9]+) (am|pm)/);
+  if(!matches) {
+    console.log("Parse error: ", times[i].innerText);
+    continue;
+  }
+  var minutes = parseInt(matches[1]) * 60 + parseInt(matches[2]);
+  if(matches[3] == "pm") {
+    minutes += 12 * 60;
+  }
+  if((minutes % (12 * 60)) < 60) {
+    minutes += 12 * 60;
+  }
+
+  // Convert from EST
+  minutes += 300;
+
+  // Normalize
+  while(minutes < 0) {
+    minutes += 24 * 60;
+  }
+  while(minutes >= 24 * 60) {
+    minutes -= 24 * 60;
+  }
+  times[i].setAttribute("data-minutes-utc", minutes);
+}
+
+
+function zeroPad2(num) {
+  num = "" + num;
+  if(num.length < 2) {
+    num = "0" + num;
+  }
+  return num;
+}
+
+// Now update the times when the timezone is changed
+function updateTimes() {
+  if(chooser.selectedOptions.length == 0) {
+    return;
+  }
+  offset = parseInt(chooser.selectedOptions[0].getAttribute("data-offset"));
+
+  var times = document.getElementsByClassName("time");
+  for(var i = 0; i < times.length; ++i) {
+    var minutes = parseInt(times[i].getAttribute("data-minutes-utc"));
+    minutes += offset;
+    if(minutes < 0) {
+      minutes += 24 * 60;
+    } else if(minutes >= 24 * 60) {
+      minutes -= 24 * 60;
+    }
+    var ampm;
+    if(minutes >= 13 * 60) {
+      minutes -= 12 * 60;
+      ampm = "pm";
+    } else if(minutes >= 12 * 60) {
+      ampm = "pm";
+    } else if(minutes >= 60) {
+      ampm = "am";
+    } else {
+      minutes += 12 * 60;
+      ampm = "am";
+    }
+    times[i].innerText = zeroPad2(Math.floor(minutes / 60)) + ":" + zeroPad2(minutes % 60) + " " + ampm;
+  }
+}
+chooser.addEventListener("change", updateTimes);
+updateTimes();
+</script>
+
+</body>
+</html>
