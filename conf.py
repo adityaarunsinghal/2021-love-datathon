@@ -146,19 +146,18 @@ NAVIGATION_LINKS = {
     
 NAVIGATION_ALT_LINKS = {
     DEFAULT_LANG: (
+        ("/organizers/", "Organizers"),
         (
             (
-                ("/organizers/", "Organizers"),
-                ("/", "Chat <i class='fas fa-external-link-alt'></i>"),
-                ("/infra/", "Infrastructure"),
+                ("/logistics/", "Logistics"),
+ #               ("/tracks/", "Datathon Tracks"),
+                ("/teams/", "Datathon Teams"),
+                ("/awards/", "Awards"),
                 ("/faq/", "FAQ"),
-                ("https://www.nyu.edu/about/policies-guidelines-compliance/policies-and-guidelines/library-conduct-code.html", "Code of Conduct <i class='fas fa-external-link-alt'></i>"),
+                ("/sponsors/", "Sponsors"),
             ),
-            'Logistics' 
-        ),
-        ("/tracks/", "Datathon Tracks"),
-        ("/teams/", "Datathon Teams"),
-        ("/awards/", "Awards"),
+            'Competition Details'
+        ),      
         (
             (
                 ("/event-schedule/", "Events"),
@@ -166,6 +165,7 @@ NAVIGATION_ALT_LINKS = {
             ),
             'Schedules'
         ),
+        ("https://www.nyu.edu/about/policies-guidelines-compliance/policies-and-guidelines/library-conduct-code.html", "Code of Conduct <i class='fas fa-external-link-alt'></i>"),
     )
 }
 
