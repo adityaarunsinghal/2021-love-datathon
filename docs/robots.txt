@@ -1,0 +1,4 @@
+Sitemap: https://nyu-dataservices.github.io/2021-love-datathon/sitemapindex.xml
+
+User-Agent: *
+Host: nyu-dataservices.github.io
