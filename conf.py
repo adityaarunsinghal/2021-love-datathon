@@ -153,7 +153,7 @@ NAVIGATION_ALT_LINKS = {
                 ("/tracks/", "Datathon Tracks"),
                 ("/teams/", "Datathon Teams"),
 #                ("/awards/", "Awards"),
-#                ("#", "FAQ"),
+                ("/faq/", "FAQ"),
                 ("/sponsors/", "Sponsors"),
             ),
             'Competition Details'
